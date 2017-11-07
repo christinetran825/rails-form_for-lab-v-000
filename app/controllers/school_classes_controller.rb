@@ -1,37 +1,29 @@
-class StudentsController < ApplicationController
-
-  def index
-    @students = Student.all
-  end
+class SchoolClassesController < ApplicationController
 
   def new
-    @student = Student.new
+    @school_class = SchoolClass.new
   end
 
   def create
-    @student = Student.create(student_params)
-    @student.save
-    redirect_to student_path(@student)
+    @school_class = SchoolClass.create(schoolclasses_params)
+    @school_class.save
+    redirect_to school_class_path(@school_class)
   end
 
   def show
-    @student = Student.find(params[:id])
-  end
-
-  def edit
-    @student = Student.find(params[:id])
+    @school_class = SchoolClass.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
-    @student.update(student_params)
-    redirect_to student_path(@student)
+    @school_class = SchoolClass.find(params[:id])
+    @school_class.update(schoolclasses_params)
+    redirect_to school_class_path(@school_class)
   end
 
   private
 
-  def student_params
-    params.require(:student).permit(:first_name, :last_name)
+  def schoolclasses_params
+    params.require(:school_class).permit(:title, :room_number)
   end
 
 end
